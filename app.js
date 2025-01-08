@@ -3,36 +3,36 @@ const path = require('path');
 
 const app = express();
 
-// 设置视图引擎
+// View engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// 静态文件
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 错误处理中间件
+// Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
 
-// 路由
+// Routes
 app.get('/', (req, res) => {
     try {
         res.render('index', {
-            title: '欢迎来到槟城',
+            title: 'Welcome to Penang',
             categories: [
                 {
-                    name: '旅游景点',
-                    description: '探索槟城的美丽景点'
+                    name: 'Tourist Spots',
+                    description: 'Explore the beautiful attractions'
                 },
                 {
-                    name: '美食佳肴',
-                    description: '品尝地道美食'
+                    name: 'Food & Cuisine',
+                    description: 'Taste local delicacies'
                 },
                 {
-                    name: '住宿酒店',
-                    description: '寻找理想住宿'
+                    name: 'Accommodations',
+                    description: 'Find your perfect stay'
                 }
             ]
         });
@@ -42,12 +42,12 @@ app.get('/', (req, res) => {
     }
 });
 
-// 404处理
+// 404 handling
 app.use((req, res) => {
     res.status(404).send('Page not found');
 });
 
-// 启动服务器
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
