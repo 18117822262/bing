@@ -5,27 +5,28 @@
         {
             "src": "app.js",
             "use": "@vercel/node"
+        },
+        {
+            "src": "public/**",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
         {
             "src": "/stylesheets/(.*)",
-            "dest": "public/stylesheets/$1"
+            "dest": "/public/stylesheets/$1"
         },
         {
             "src": "/images/(.*)",
-            "dest": "public/images/$1"
+            "dest": "/public/images/$1"
         },
         {
             "src": "/javascripts/(.*)",
-            "dest": "public/javascripts/$1"
+            "dest": "/public/javascripts/$1"
         },
         {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/.*",
-            "dest": "app.js"
+            "src": "/(.*)",
+            "dest": "/app.js"
         }
     ]
 } 
