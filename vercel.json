@@ -8,8 +8,25 @@
     ],
     "routes": [
         {
+            "src": "/images/(.*)",
+            "dest": "/public/images/$1"
+        },
+        {
+            "src": "/stylesheets/(.*)",
+            "dest": "/public/stylesheets/$1"
+        },
+        {
+            "src": "/javascripts/(.*)",
+            "dest": "/public/javascripts/$1"
+        },
+        {
             "src": "/(.*)",
-            "dest": "app.js"
+            "dest": "/app.js"
         }
-    ]
+    ],
+    "env": {
+        "NODE_ENV": "production"
+    },
+    "regions": ["hkg1"],
+    "public": true
 } 
