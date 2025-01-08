@@ -49,26 +49,9 @@ app.use((req, res) => {
 
 // 启动服务器
 const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
     console.log('Press Ctrl+C to stop');
 });
 
-server.on('error', (error) => {
-    if (error.syscall !== 'listen') {
-        throw error;
-    }
-
-    switch (error.code) {
-        case 'EACCES':
-            console.error(`Port ${PORT} requires elevated privileges`);
-            process.exit(1);
-            break;
-        case 'EADDRINUSE':
-            console.error(`Port ${PORT} is already in use`);
-            process.exit(1);
-            break;
-        default:
-            throw error;
-    }
-}); 
+module.exports = app; 
