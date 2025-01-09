@@ -9,6 +9,9 @@
 <body>
     <header>
         <nav>
+            <div class="toggle-btn">
+                <span>☰</span>
+            </div>
             <div class="logo">
                 <h1>Penang Tourism</h1>
             </div>
@@ -22,12 +25,25 @@
 
     <main>
         <section class="hero">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="/videos/penang-intro.mp4" type="video/mp4">
+            </video>
             <div class="hero-content">
                 <h1>Welcome to Penang</h1>
                 <p>Explore the Pearl of the Orient</p>
-                <a href="#explore" class="hero-btn">Start Exploring</a>
+                <button class="hero-btn" id="playVideo">Start Exploring</button>
             </div>
         </section>
+
+        <!-- 视频弹出层 -->
+        <div class="video-modal">
+            <div class="video-modal-content">
+                <div class="close-video-btn">&times;</div>
+                <video id="featureVideo" controls>
+                    <source src="/videos/penang-feature.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
 
         <section id="tourist-spots" class="section">
             <h2 class="section-title">Popular Attractions</h2>
@@ -36,40 +52,61 @@
                     <img src="/images/georgetown.jpg" alt="Georgetown Heritage">
                     <h3>Georgetown Heritage</h3>
                     <p>UNESCO World Heritage Site with unique architecture and cultural landscape</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <a href="#" class="btn" data-detail="georgetown-detail">Learn More</a>
                 </div>
                 <div class="spot-card">
                     <img src="/images/kek-lok-si.jpg" alt="Kek Lok Si Temple">
                     <h3>Kek Lok Si Temple</h3>
                     <p>Malaysia's largest Buddhist temple with magnificent architecture</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <a href="#" class="btn" data-detail="kek-lok-si-detail">Learn More</a>
                 </div>
                 <div class="spot-card">
                     <img src="/images/penang-hill.jpg" alt="Penang Hill">
                     <h3>Penang Hill</h3>
                     <p>Historic funicular railway with panoramic city views</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <a href="#" class="btn" data-detail="penang-hill-detail">Learn More</a>
                 </div>
             </div>
         </section>
 
         <section id="food" class="section">
             <h2 class="section-title">Local Delicacies</h2>
-            <div class="food-grid">
-                <div class="food-card">
-                    <img src="/images/char-kuey-teow.jpg" alt="Char Kuey Teow">
-                    <h3>Penang Char Kuey Teow</h3>
-                    <p>Famous stir-fried noodles with aromatic flavors</p>
+            <div class="food-slider">
+                <div class="food-grid">
+                    <div class="food-card">
+                        <img src="/images/char-kuey-teow.jpg" alt="Char Kuey Teow">
+                        <h3>Penang Char Kuey Teow</h3>
+                        <p>Famous stir-fried noodles with aromatic flavors</p>
+                    </div>
+                    <div class="food-card">
+                        <img src="/images/asam-laksa.jpg" alt="Asam Laksa">
+                        <h3>Asam Laksa</h3>
+                        <p>Sour and spicy fish noodle soup with unique taste</p>
+                    </div>
+                    <div class="food-card">
+                        <img src="/images/nasi-kandar.jpg" alt="Nasi Kandar">
+                        <h3>Nasi Kandar</h3>
+                        <p>Rice with various curry dishes, full of flavors</p>
+                    </div>
+                    <div class="food-card">
+                        <img src="/images/cendol.jpg" alt="Cendol">
+                        <h3>Penang Cendol</h3>
+                        <p>Traditional dessert with green rice flour jelly and coconut milk</p>
+                    </div>
+                    <div class="food-card">
+                        <img src="/images/hokkien-mee.jpg" alt="Hokkien Mee">
+                        <h3>Hokkien Prawn Mee</h3>
+                        <p>Rich prawn soup based noodles with spicy sambal</p>
+                    </div>
+                    <div class="food-card">
+                        <img src="/images/rojak.jpg" alt="Rojak">
+                        <h3>Penang Rojak</h3>
+                        <p>Mixed fruit salad with sweet and spicy sauce</p>
+                    </div>
                 </div>
-                <div class="food-card">
-                    <img src="/images/asam-laksa.jpg" alt="Asam Laksa">
-                    <h3>Asam Laksa</h3>
-                    <p>Sour and spicy fish noodle soup with unique taste</p>
-                </div>
-                <div class="food-card">
-                    <img src="/images/nasi-kandar.jpg" alt="Nasi Kandar">
-                    <h3>Nasi Kandar</h3>
-                    <p>Rice with various curry dishes, full of flavors</p>
+                <div class="slider-controls">
+                    <button class="prev-btn">❮</button>
+                    <button class="next-btn">❯</button>
                 </div>
             </div>
         </section>
@@ -139,6 +176,97 @@
             <p>&copy; 2024 Penang Tourism. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- 景点详情弹出层 -->
+    <div id="georgetown-detail" class="detail-section">
+        <div class="close-btn">&times;</div>
+        <div class="detail-content">
+            <h2 class="section-title">Georgetown Heritage</h2>
+            <div class="detail-grid">
+                <div class="detail-image">
+                    <img src="/images/georgetown.jpg" alt="Georgetown Heritage">
+                </div>
+                <div class="detail-text">
+                    <h3>A UNESCO World Heritage Site</h3>
+                    <p>Georgetown, the capital city of Penang, was inscribed as a UNESCO World Heritage Site in 2008. The city showcases a unique blend of Eastern and Western influences in its architecture and culture.</p>
+                    <div class="detail-features">
+                        <h4>Key Highlights:</h4>
+                        <ul>
+                            <li>Street Art and Murals</li>
+                            <li>Colonial Architecture</li>
+                            <li>Traditional Shophouses</li>
+                            <li>Cultural Museums</li>
+                        </ul>
+                    </div>
+                    <div class="detail-info">
+                        <p><strong>Best Time to Visit:</strong> Early morning or late afternoon</p>
+                        <p><strong>Duration:</strong> 3-4 hours recommended</p>
+                        <p><strong>Location:</strong> Georgetown, Penang Island</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="kek-lok-si-detail" class="detail-section">
+        <div class="close-btn">&times;</div>
+        <div class="detail-content">
+            <h2 class="section-title">Kek Lok Si Temple</h2>
+            <div class="detail-grid">
+                <div class="detail-image">
+                    <img src="/images/kek-lok-si.jpg" alt="Kek Lok Si Temple">
+                </div>
+                <div class="detail-text">
+                    <h3>The Temple of Supreme Bliss</h3>
+                    <p>Kek Lok Si is the largest Buddhist temple in Malaysia and a significant pilgrimage center for Buddhists from Southeast Asia. The temple complex was built over a period from 1890 to 1930.</p>
+                    <div class="detail-features">
+                        <h4>Key Highlights:</h4>
+                        <ul>
+                            <li>Pagoda of Ten Thousand Buddhas</li>
+                            <li>Giant Bronze Statue of Guanyin</li>
+                            <li>Liberation Pond</li>
+                            <li>Prayer Halls</li>
+                        </ul>
+                    </div>
+                    <div class="detail-info">
+                        <p><strong>Best Time to Visit:</strong> Morning or during Chinese New Year</p>
+                        <p><strong>Duration:</strong> 2-3 hours recommended</p>
+                        <p><strong>Location:</strong> Air Itam, Penang</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="penang-hill-detail" class="detail-section">
+        <div class="close-btn">&times;</div>
+        <div class="detail-content">
+            <h2 class="section-title">Penang Hill</h2>
+            <div class="detail-grid">
+                <div class="detail-image">
+                    <img src="/images/penang-hill.jpg" alt="Penang Hill">
+                </div>
+                <div class="detail-text">
+                    <h3>A Historic Hill Station</h3>
+                    <p>Penang Hill, also known as Bukit Bendera, is the oldest British hill station in Southeast Asia. Rising 833 meters above sea level, it offers spectacular views of the island and a cool retreat from the heat.</p>
+                    <div class="detail-features">
+                        <h4>Key Highlights:</h4>
+                        <ul>
+                            <li>Funicular Railway</li>
+                            <li>The Habitat Penang Hill</li>
+                            <li>Colonial Bungalows</li>
+                            <li>Viewing Decks</li>
+                        </ul>
+                    </div>
+                    <div class="detail-info">
+                        <p><strong>Best Time to Visit:</strong> Early morning for clear views</p>
+                        <p><strong>Duration:</strong> 2-4 hours recommended</p>
+                        <p><strong>Location:</strong> Air Itam, Penang</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="/javascripts/main.js"></script>
 </body>
